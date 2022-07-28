@@ -1,35 +1,30 @@
+server:
+  port: 8081
 spring:
   application:
-    name: cloud-gateway-serv
-  autoconfigure:
-    exclude:
-      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
-  cloud:
-    discovery:
-      enabled: true
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
-      routes:
-        - id: gestion-solicitud-serv
-          uri: lb://gestion-solicitud-serv
-          predicates:
-            - Path=/cloud-gateway-service/solicitud/**
-          filters:
-            - RewritePath=/cloud-gateway-service/solicitud/,/
-server:
-  port: 9001
+    name: asae-maestria-computacion
+  datasource:
+    # El nombre de la base de datos es "maestria-computacion", crear la base de datos vacia utf8_bin
+    url: jdbc:mysql://localhost/jpa?useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true
+    username: root
+    password: 
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    #database-platform: org.hibernate.dialect.MySQL8Dialect 
+    properties:
+      hibernate:  
+        dialect: org.hibernate.dialect.MySQL8Dialect
+      #javax:
+        #persistence:
+          #validation:
+            #mode: none
+    show-sql: true
+    generate-ddl: false
+    hibernate:
+      ddl-auto: update
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-  instance:
-    prefer-ip-address: true
-management:
-  endpoint:
-    gateway:
-      enabled: true
-
+logging:
+  level:
+    org:
+      hibernate:
+        type: trace
