@@ -15,8 +15,6 @@
     <description>cloud-gateway-service</description>
     <properties>
         <java.version>11</java.version>
-    </properties>
-    <properties>
         <sonar.organization>backend-java</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
