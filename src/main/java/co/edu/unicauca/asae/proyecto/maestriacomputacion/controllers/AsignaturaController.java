@@ -58,7 +58,7 @@ public class AsignaturaController {
 			@Size(min = 2, max = 45) @PathVariable String codigo){
 		HashMap<String, Object> respuestas = new HashMap<>();
 		ResponseEntity<?> respuesta = new ResponseEntity<>(
-				"No hay ninguna asignatura ", 
+				"No hay ninguna  ", 
 				HttpStatus.NOT_FOUND);
 		Asignatura asignaturaDB = null;
 		try {
